@@ -1,0 +1,191 @@
+:root {
+  --bg: #f1f5f9;
+  --card: #ffffff;
+  --text: #1e293b;
+  --muted: #64748b;
+  --border: #e2e8f0;
+  --track: #e2e8f0;
+  --accent: #10b981;
+  --accent-dark: #059669;
+  --danger: #ef4444;
+  --fire: #f97316;
+}
+
+.dark-mode {
+  --bg: #0f172a;
+  --card: #1e293b;
+  --text: #e2e8f0;
+  --muted: #94a3b8;
+  --border: #334155;
+  --track: #334155;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.4;
+  transition: background 0.3s, color 0.3s;
+}
+
+.container { width: 90%; max-width: 800px; margin: 0 auto; padding-bottom: 60px; }
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  padding: 24px 0;
+}
+h1 { font-size: 1.5rem; }
+.header-actions { display: flex; gap: 10px; }
+
+/* Buttons */
+button {
+  font: inherit;
+  border: none;
+  border-radius: 8px;
+  padding: 8px 14px;
+  cursor: pointer;
+  background: var(--track);
+  color: var(--text);
+  transition: transform 0.1s, background 0.2s, filter 0.2s;
+}
+button:hover { filter: brightness(0.95); }
+button:active { transform: scale(0.96); }
+.primary-btn { background: var(--accent); color: #fff; font-weight: 600; }
+.primary-btn:hover { background: var(--accent-dark); filter: none; }
+.delete-btn { background: transparent; color: var(--danger); }
+
+/* Cards */
+.card {
+  background: var(--card);
+  border-radius: 14px;
+  padding: 18px;
+  margin-bottom: 16px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  transition: background 0.3s;
+}
+.card h2 { font-size: 1rem; margin-bottom: 12px; }
+
+/* Stats */
+.stats { display: flex; align-items: center; gap: 18px; flex-wrap: wrap; }
+.level-badge {
+  width: 64px; height: 64px;
+  display: grid; place-items: center;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #f59e0b, #f97316);
+  color: #fff; font-weight: 700; font-size: 1.1rem;
+}
+.xp { flex: 1; min-width: 180px; }
+.xp-label { display: flex; justify-content: space-between; font-size: 0.85rem; color: var(--muted); margin-bottom: 6px; }
+.mini-stats { display: flex; gap: 18px; }
+.mini-stats div { display: flex; flex-direction: column; align-items: center; }
+.mini-stats strong { font-size: 1.2rem; }
+.mini-stats span { font-size: 0.75rem; color: var(--muted); }
+
+/* Progress bars */
+.progress-bar { height: 12px; background: var(--track); border-radius: 99px; overflow: hidden; }
+.progress-bar-fill {
+  height: 100%; width: 0;
+  background: linear-gradient(90deg, #34d399, #10b981);
+  border-radius: 99px;
+  transition: width 0.5s ease;
+}
+
+/* Habit cards */
+.habit-card.done { border-left: 5px solid var(--accent); }
+.card-top { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; }
+.emoji { font-size: 1.6rem; }
+.card-top h3 { flex: 1; font-size: 1.05rem; }
+.streak { color: var(--fire); font-weight: 700; font-size: 0.85rem; text-align: right; }
+.week { display: flex; gap: 6px; margin-bottom: 12px; }
+.dot {
+  width: 28px; height: 28px;
+  display: grid; place-items: center;
+  border-radius: 50%;
+  font-size: 0.7rem;
+  background: var(--track); color: var(--muted);
+}
+.dot.on { background: var(--accent); color: #fff; }
+.progress-label { font-size: 0.8rem; color: var(--muted); margin: 6px 0 12px; }
+.card-actions { display: flex; justify-content: space-between; }
+.empty { text-align: center; color: var(--muted); padding: 30px 0; }
+
+/* Chart */
+#chart { display: flex; gap: 10px; height: 200px; }
+.bar-col { flex: 1; display: flex; flex-direction: column; align-items: center; gap: 4px; }
+.bar-track { flex: 1; width: 100%; display: flex; align-items: flex-end; background: var(--track); border-radius: 8px; overflow: hidden; }
+.bar { width: 100%; background: linear-gradient(180deg, #34d399, #10b981); border-radius: 8px 8px 0 0; transition: height 0.5s; }
+.bar-value, .bar-label { font-size: 0.75rem; color: var(--muted); }
+
+/* Badges */
+#badges { display: grid; grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); gap: 10px; }
+.badge { text-align: center; padding: 12px 8px; border: 1px solid var(--border); border-radius: 10px; font-size: 0.85rem; }
+.badge .icon { font-size: 1.8rem; display: block; }
+.badge small { display: block; color: var(--muted); font-size: 0.75rem; }
+.badge.locked { opacity: 0.4; filter: grayscale(1); }
+
+/* Dialog */
+dialog {
+  margin: auto;
+  border: none;
+  border-radius: 14px;
+  padding: 22px;
+  width: min(92vw, 380px);
+  background: var(--card);
+  color: var(--text);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+}
+dialog::backdrop { background: rgba(0, 0, 0, 0.5); }
+dialog h2 { margin-bottom: 14px; }
+dialog label { font-size: 0.85rem; color: var(--muted); }
+dialog input {
+  width: 100%;
+  padding: 10px;
+  margin: 6px 0 14px;
+  font: inherit;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--bg);
+  color: var(--text);
+}
+#emoji-picker { display: flex; flex-wrap: wrap; gap: 6px; margin: 6px 0 16px; }
+#emoji-picker button { font-size: 1.3rem; padding: 6px 8px; }
+#emoji-picker button.selected { outline: 2px solid var(--accent); }
+.actions { display: flex; justify-content: flex-end; gap: 8px; }
+
+/* Toasts */
+#toasts {
+  position: fixed; bottom: 20px; left: 50%;
+  transform: translateX(-50%);
+  display: flex; flex-direction: column; gap: 8px;
+  z-index: 1100;
+}
+.toast {
+  background: #334155; color: #fff;
+  padding: 10px 16px; border-radius: 10px;
+  font-size: 0.9rem;
+  animation: pop 0.25s ease;
+}
+.toast.success { background: var(--accent-dark); }
+.toast.error { background: var(--danger); }
+@keyframes pop { from { opacity: 0; transform: translateY(10px); } }
+
+/* Confetti */
+.confetti {
+  position: fixed; top: -12px;
+  width: 8px; height: 12px;
+  pointer-events: none;
+  z-index: 1000;
+  animation: fall 1.6s ease-in forwards;
+}
+@keyframes fall { to { transform: translate(var(--dx), 105vh) rotate(720deg); opacity: 0.8; } }
+
+@media (max-width: 600px) {
+  .card-top { flex-wrap: wrap; }
+  .streak { width: 100%; text-align: left; }
+}
