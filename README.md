@@ -13,6 +13,8 @@
 
 ## Run the app
 
+Install dependencies once with `npm install`.
+
 For the built app, run `npm start` and open `http://localhost:3000`.
 
 For development, run `npm start` in one terminal and `npm run dev` in another, then open the Vite URL printed by the second command.
